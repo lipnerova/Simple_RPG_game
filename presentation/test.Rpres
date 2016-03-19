@@ -1,0 +1,66 @@
+
+
+Simple RPG game
+========================================================
+author: Ivana Lipnerova
+date: 19. 3. 2016
+font-family: 'Times New Roman'
+
+
+
+
+
+Why do not present some data with some graphs and slider and so on?
+========================================================
+
+
+- I have no data I wish to share
+- tweaking Shiny to do what it's not built to do seems interesting
+- give some fun project for peers to review (and for me to do!)
+- I'm fan of certain postapocalyptic RPG game series, so this is a kind of tribute
+
+
+What is the app about
+========================================================
+
+- the app game is very simple 
+- takes inspiration from the tributed games to (re)create the Temple of Trials
+- uses Shiny's functions to let user go through the trials (e.g. do actions):
+<ul>
+        <li><strong>radioButtons</strong> let user chose which path he wishes to go</li>
+        
+        <li><strong>conditionalPanel</strong> appear after their condition is fulfilled, only one condition per panel is possible</li>
+        
+        <li><strong>actionButtons</strong> are triggers for conditional panels</li>
+</ul>
+
+
+How to play
+========================================================
+
+- follow the instructions :)
+- chose your abilities (strength, agility, intelligence)
+- test your abilities against opponents
+- win your way out of the Temple of Trials
+
+- Play here: https://lipnerova.shinyapps.io/Simple_RPG_game/
+
+
+
+Game mechanics
+========================================================
+
+
+- fight system is based on roll of dices
+- number of spent ability points is number of dice rolls
+- opponents have one or two dice rolls
+- larger sum of rolls wins (equality is a victory for player)
+
+```{r}
+opponent <- (sample(1:6, 1, replace = T)); you<- (sum((sample(1:6, 3, replace = T))))
+        #in place of 3 there is input from user in the app
+winLose <- as.character(opponent <= you)
+df<-data.frame(opponent, you, winLose); colnames(df) <- c("Your opponent", "You", "Do you win?")
+df
+```
+
